@@ -1,0 +1,7 @@
+{
+  "permissions": {
+    "allow": [
+      "PowerShell(& cmd.exe /c 'for %I in \\(\"C:\\\\Program Files\\\\Git\\\\bin\\\\bash.exe\"\\) do @echo %~sI')"
+    ]
+  }
+}

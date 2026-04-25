@@ -1,0 +1,10 @@
+id: task-05-scheduling-issue
+title: "Fix Pod Scheduling — Taint and Toleration"
+description: "All worker nodes have a taint that prevents the deployment pods from being scheduled. Fix the scheduling issue so pods run."
+difficulty: medium
+topic: scheduling
+namespace: cka-task-05
+requirements:
+  - kubectl
+  - understanding of taints, tolerations, and node scheduling
+estimated_minutes: 15

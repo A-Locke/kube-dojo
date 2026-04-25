@@ -1,0 +1,10 @@
+id: task-04-pvc-binding
+title: "Fix PVC Stuck in Pending"
+description: "A PersistentVolumeClaim is stuck in Pending state because it requests a StorageClass that does not exist. Fix it so the PVC binds."
+difficulty: medium
+topic: storage
+namespace: cka-task-04
+requirements:
+  - kubectl
+  - understanding of PVC, StorageClass, and PersistentVolumes
+estimated_minutes: 15

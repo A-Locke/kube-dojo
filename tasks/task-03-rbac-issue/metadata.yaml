@@ -1,0 +1,10 @@
+id: task-03-rbac-issue
+title: "Fix RBAC — ServiceAccount Missing Permissions"
+description: "A pod using a custom ServiceAccount is failing because the SA lacks permission to list pods. Create the required Role and RoleBinding."
+difficulty: medium
+topic: rbac
+namespace: cka-task-03
+requirements:
+  - kubectl
+  - understanding of RBAC (Role, RoleBinding, ServiceAccount)
+estimated_minutes: 15

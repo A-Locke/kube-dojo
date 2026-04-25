@@ -1,0 +1,10 @@
+id: task-01-broken-service
+title: "Fix Broken Service Routing"
+description: "A Kubernetes Service is not routing traffic to any pods. The selector is misconfigured. Find and fix it."
+difficulty: easy
+topic: services
+namespace: cka-task-01
+requirements:
+  - kubectl
+  - understanding of Service selectors and pod labels
+estimated_minutes: 10

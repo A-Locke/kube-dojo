@@ -1,0 +1,10 @@
+id: task-02-deployment-not-ready
+title: "Fix Deployment With Bad Image"
+description: "A Deployment references a container image that does not exist. Pods are stuck in ImagePullBackOff. Fix it."
+difficulty: easy
+topic: deployments
+namespace: cka-task-02
+requirements:
+  - kubectl
+  - understanding of Deployment spec and container images
+estimated_minutes: 10
