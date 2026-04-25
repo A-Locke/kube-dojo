@@ -76,12 +76,12 @@ def load_metadata(task_dir: Path) -> dict:
     if yaml is None:
         # Minimal YAML parser for simple key: value files
         meta = {}
-        for line in meta_file.read_text().splitlines():
+        for line in meta_file.read_text(encoding="utf-8").splitlines():
             if ":" in line and not line.startswith("#"):
                 k, _, v = line.partition(":")
-                meta[k.strip()] = v.strip()
+                meta[k.strip()] = v.strip().strip('"')
         return meta
-    with open(meta_file) as f:
+    with open(meta_file, encoding="utf-8") as f:
         return yaml.safe_load(f) or {}
 
 
@@ -126,11 +126,11 @@ def generate_scenario(task_id: str, output_base: Path = SCENARIOS_DIR) -> Path:
             "imageid": "kubernetes-kubeadm-1node",
         },
     }
-    (scenario_dir / "index.json").write_text(json.dumps(index, indent=2) + "\n")
+    (scenario_dir / "index.json").write_text(json.dumps(index, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
 
     # step1/text.md — the task prompt
-    prompt = (task_dir / "prompt.md").read_text()
-    (step_dir / "text.md").write_text(prompt)
+    prompt = (task_dir / "prompt.md").read_text(encoding="utf-8")
+    (step_dir / "text.md").write_text(prompt, encoding="utf-8")
 
     # step1/verify.sh — wraps the shared task verify.sh
     verify_sh = f"""\
@@ -141,7 +141,7 @@ TASK_DIR="/root/cka-bench/tasks/{task_id}"
 bash "${{TASK_DIR}}/verify.sh"
 """
     verify_path = step_dir / "verify.sh"
-    verify_path.write_text(verify_sh)
+    verify_path.write_text(verify_sh, encoding="utf-8")
 
     # foreground.sh — clones repo and runs setup
     foreground_sh = f"""\
@@ -163,7 +163,7 @@ bash "${{TASK_DIR}}/setup.sh"
 echo "[setup] Done. Read Step 1 for instructions."
 """
     fg_path = scenario_dir / "foreground.sh"
-    fg_path.write_text(foreground_sh)
+    fg_path.write_text(foreground_sh, encoding="utf-8")
 
     # intro.md
     intro_md = f"""\
@@ -175,7 +175,7 @@ The environment is being prepared. This may take a moment.
 
 Once ready, proceed to **Step 1** to read the task description.
 """
-    (scenario_dir / "intro.md").write_text(intro_md)
+    (scenario_dir / "intro.md").write_text(intro_md, encoding="utf-8")
 
     # finish.md
     finish_md = """\
@@ -185,7 +185,7 @@ You successfully completed this CKA-style task.
 
 Keep practising to build confidence for the real exam.
 """
-    (scenario_dir / "finish.md").write_text(finish_md)
+    (scenario_dir / "finish.md").write_text(finish_md, encoding="utf-8")
 
     print(f"[generate] Scenario written: {scenario_dir}")
     return scenario_dir

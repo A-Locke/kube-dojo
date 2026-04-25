@@ -356,8 +356,8 @@ Because of this, scenario files must live at the **root** of their own dedicated
 
 | Repo | Purpose |
 |---|---|
-| `kube-dojo` | Main repo — task scripts, harness, solver, docs |
-| `kube-dojo-scenarios` | Scenarios repo — generated Killercoda files only, with each scenario at the root |
+| [`kube-dojo`](https://github.com/A-Locke/kube-dojo) | Main repo — task scripts, harness, solver, docs |
+| [`kube-dojo-scenarios`](https://github.com/A-Locke/kube-dojo-scenarios) | Scenarios repo — generated Killercoda files only, with each scenario at the root |
 
 `foreground.sh` inside each scenario always clones from `kube-dojo` to get the task scripts. The scenarios repo is just a delivery vehicle for Killercoda.
 
